@@ -1,0 +1,68 @@
+.ref1 {
+  width: 80%;
+  margin: 12px auto;
+}
+
+.row {
+  padding: 4px 10px;
+}
+
+.col {
+  padding: 12px;
+  background-color: lightgrey;
+  border-radius: 12px;
+  margin: 4px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.col1 {
+  padding: 0px 12px;
+  margin: 4px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.col:hover {
+  background-color: #0a0a0e;
+  color: white;
+}
+
+.row3 {
+  padding: 0px 0px 12px 0px;
+  margin: 4px 0px;
+}
+
+.row4 {
+  padding: 0px 0px 12px 0px;
+  margin: 4px 0px;
+}
+
+.coats {
+  font-weight: 800;
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 0.2rem;
+}
+
+.view {
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.button{
+    padding: 0px 4px;
+}
+
+.box{
+    border: 2px solid lightgrey;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.8rem;
+}

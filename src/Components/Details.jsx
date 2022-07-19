@@ -2,18 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Api from './Api'
 
-const Details = (props) => {
+const Details = () => {
   const params = useParams();
   const [Notes, setNotes] = useState([]);
   
   const getId = async () => {
-    const response = await fetch(
-      `https://fakestoreapi.com/products/${params.id}`,
+    const response = await fetch(`https://fakestoreapi.com/products/${params.id}`,
       {
         method: "GET",
-        headers: {
-          'Content-Type': 'application/json'
-        }
       }
     );
     const json = await response.json();
@@ -24,6 +20,7 @@ const Details = (props) => {
 
   useEffect(() => {
     getId();
+    // eslint-disable-next-line
   }, []);
 
   return (

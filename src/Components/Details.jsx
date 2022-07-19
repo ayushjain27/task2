@@ -1,37 +1,39 @@
-import React from "react";
-import styles from "./Details.module.css";
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Api from './Api'
 
 const Details = (props) => {
-  const navigate = useNavigate()
-  const GOBACK = () => {
-    navigate('/')
-  }
-  let {imageUrl, id} = props;
+  const params = useParams();
+  const [Notes, setNotes] = useState([]);
+  
+  const getId = async () => {
+    const response = await fetch(
+      `https://fakestoreapi.com/products/${params.id}`,
+      {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    const json = await response.json();
+    console.log(json);
+    setNotes(json);
+    console.log("Complete");
+  };
+
+  useEffect(() => {
+    getId();
+  }, []);
+
   return (
     <>
-      <div className={`${styles.container} my-3`}>
-        <div className="row">
-          <div className={`${styles.col} col-5`}>
-            <div>
-              <img className={styles.img} id={id} src={imageUrl} alt="" />
-            </div>
-          </div>
-          <div className={`${styles.col1} col-7`}>
-            <div className="card">
-              <div className="card-body">
-                <h3 className="card-title my-3 fw-bold">title</h3>
-                <p className="card-title my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione mollitia, voluptatum optio delectus amet, reprehenderit laborum nesciunt rerum repudiandae expedita nobis! Molestias impedit facere accusantium, ipsum officiis ab totam soluta delectus. Maxime, totam quibusdam!</p>
-                <h5 className="card-title my-3">price</h5>
-                <h5 className="card-title my-3">rating</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="my-3" style={{width: '80%', margin: '0px auto'}}>
-      <button onClick={GOBACK} type="button" className="btn btn-danger">Go Back</button>
-      </div>
+      <h2>{params.id}</h2>
+      {Notes.map((element) => {
+        return(
+          <Api imageUrl={element.image} title={element.title} description={element.description} price={element.price} rating={element.rating} />
+        )
+      })}
     </>
   );
 };

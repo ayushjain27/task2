@@ -17,7 +17,6 @@ const Collection = () => {
 
   useEffect(() => {
     getNotes();
-    // eslint-disable-next-line
   }, []);
 
   const handleClickHome = () => {
